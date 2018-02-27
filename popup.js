@@ -1,16 +1,20 @@
 chrome.storage.local.get(function (result) {
-  selected_pairs = result['selected_pairs'];
+  selected_pairs = result['selected_pairs']
   if(!isEmpty(selected_pairs)){
     $('#select_exchange').hide();
     $('#display_all_exchange_pairs section').hide();
     $('#submit_chosen_pairs').hide();
+    loadSelectedPairs();
   }
-  loadSelectedPairs();
+  else{
+    selected_pairs = {}
+  }
 });
 
 $('#select_exchange').on('change', function(){
   $('#display_all_exchange_pairs section').hide();
   $('#submit_chosen_pairs').show();
+
   if(this.value != "" && !selected_pairs.hasOwnProperty(this.value)){
     selected_pairs[this.value] = []
   }
