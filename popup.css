@@ -303,3 +303,6 @@ select{
 .real_time_pairs{
   width: 100%;
 }
+.setting_area{
+  margin: 20px;
+}

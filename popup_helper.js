@@ -9,6 +9,7 @@ const map_price = {
     btc: "₿"
 };
 var selected_pairs = {};
+var open_connection = {};
 
 function loadSelectedPairs(){
   Object.keys(selected_pairs).forEach(function(element) {
@@ -112,6 +113,8 @@ function GdaxRealTimePrice(pairs){
 
     }
   }
+  //set open_connection
+  open_connection['gdax'] = gdax_api;
 }
 
 function isEmpty(obj) {
@@ -137,4 +140,15 @@ function isEmpty(obj) {
     }
 
     return true;
+}
+
+function closeConnection(api){
+  if(typeof api === 'undefined'){
+    Object.keys(open_connection).forEach(function(key) {
+      open_connection[key].close();
+    });
+  }
+  else{
+    open_connection[api].close();
+  }
 }

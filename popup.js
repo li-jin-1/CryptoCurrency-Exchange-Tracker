@@ -47,3 +47,9 @@ $('#submit_chosen_pairs').on('click', function(){
   $('#submit_chosen_pairs').hide();
   setSelectedPairs();
 });
+
+$('#clear_setting').on('click', function(){
+  chrome.storage.local.clear(function(){
+    closeConnection();
+  })
+});
