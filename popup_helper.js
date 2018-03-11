@@ -85,49 +85,11 @@ function appendNewPairs(pairs){
 }
 
 function GdaxRealTimePrice(pairs){
-  var msg = {
-    "type": "subscribe",
-    "channels": [{
-      "name": "ticker",
-      "product_ids": pairs
-    }]
-  };
-  var gdax_api = new Gdax();
-  gdax_api.socket.onopen = function (event) {
-    console.log('here')
-    gdax_api.socket.send(
-      JSON.stringify(msg)
-    );
-  };
-  gdax_api.socket.onmessage = function (event) {
-    console.log(event.data);
-    var res = JSON.parse(event.data);
-    var sequence = 0;
-    switch (res.type) {
-      case 'ticker':
-        if(res.sequence > sequence){
-          var price = Number(res.price).toFixed(2);
-          var open_24h = Number(res.open_24h).toFixed(2);
-          var elm = $('#'+res.product_id);
-          var growth_24hr = (Math.abs(price - open_24h)*100/open_24h).toFixed(2)
-          var trend_24hr = (Number(price) >= Number(open_24h))? 'up' : 'down';
-          var change_rate = elm.find('.change');
-          change_rate.text(growth_24hr + '%');
-          change_rate.removeClass('up down');
-          change_rate.addClass(trend_24hr);
-          var price_elm = elm.find('.coin-price');
-          var price_sym = getPriceSymbol(res.product_id.slice(-3));
-          price_elm.text(price_sym + price);
-        }
-        break;
-      case 'error':
-        break;
-      default:
-
-    }
+  if(typeof open_connection['gdax'] !== 'undefined'){
+    open_connection['gdax'].close();
   }
-  //set open_connection
-  open_connection['gdax'] = gdax_api;
+  var gdax_api = new Gdax();
+  gdax_api.open(pairs);
 }
 
 function isEmpty(obj) {
@@ -156,7 +118,7 @@ function isEmpty(obj) {
 }
 
 function closeConnection(api){
-  if(typeof api === 'undefined'){
+  if(typeof api === 'undefined' || api == 'all'){
     Object.keys(open_connection).forEach(function(key) {
       open_connection[key].close();
     });
