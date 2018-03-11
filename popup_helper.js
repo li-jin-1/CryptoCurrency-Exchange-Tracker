@@ -89,7 +89,28 @@ function GdaxRealTimePrice(pairs){
     open_connection['gdax'].close();
   }
   var gdax_api = new Gdax();
-  gdax_api.open(pairs);
+  gdax_api.open(pairs, function(res){
+    switch (res.type) {
+      case 'ticker':
+        var price = Number(res.price).toFixed(2);
+        var open_24h = Number(res.open_24h).toFixed(2);
+        var elm = $('#'+res.product_id);
+        var growth_24hr = (Math.abs(price - open_24h)*100/open_24h).toFixed(2)
+        var trend_24hr = (Number(price) >= Number(open_24h))? 'up' : 'down';
+        var change_rate = elm.find('.change');
+        change_rate.text(growth_24hr + '%');
+        change_rate.removeClass('up down');
+        change_rate.addClass(trend_24hr);
+        var price_elm = elm.find('.coin-price');
+        var price_sym = getPriceSymbol(res.product_id.slice(-3));
+          price_elm.text(price_sym + price);
+        break;
+      case 'error':
+        break;
+      default:
+        break;
+    }
+  });
 }
 
 function isEmpty(obj) {
