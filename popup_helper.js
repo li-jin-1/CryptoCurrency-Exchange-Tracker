@@ -6,7 +6,7 @@ const map_price = {
     chf: "CHF",
     cny: "¥",
     gbp: "£",
-    btc: "₿"
+    btc: String.fromCharCode(parseInt("+20BF",16))
 };
 var selected_pairs = {};
 var open_connection = {};
