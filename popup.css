@@ -367,6 +367,7 @@ select{
   z-index: -1;
   opacity: 0;
   display: flex;
+  top: 0;
 }
 .main_panel{
   width: 100%;
