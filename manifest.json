@@ -9,5 +9,5 @@
           "default_title": "CryptoCurrency Exchamge Tracker",
           "default_popup": "popup.html"
         },
-        "permissions": ["storage", "tabs"]
+        "permissions": ["storage"]
 }
