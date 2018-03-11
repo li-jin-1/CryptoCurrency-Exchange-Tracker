@@ -11,6 +11,20 @@ const map_price = {
 var selected_pairs = {};
 var open_connection = {};
 
+function refreshCheckedList(exchange_name){
+  var pairs = selected_pairs[exchange_name];
+  console.log(exchange_name)
+  var selected_exchange_elm = $('#'+exchange_name+'_pairs')
+  $('#gdax_pairs [type=checkbox]').each(function(index){
+    if(pairs.includes(this.value)){
+      this.checked = true;
+    }
+    else{
+      this.checked = false;
+    }
+  })
+}
+
 function loadSelectedPairs(){
   Object.keys(selected_pairs).forEach(function(element) {
     switch (element) {

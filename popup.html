@@ -7,167 +7,178 @@
     </head>
     <body style="width: 321px;">
         <div class="container" style="opacity: 1;">
-          <select id="select_exchange">
-            <option value="">Select exchange</option>
-            <option value="gdax">Gdax</option>
-            <option value="coinbase">Coinbase</option>
-          </select>
-          <div class="setting_area">
+          <div class="banner">
+            <div class="banner_left">
+              <select id="select_exchange">
+                <option value="">Select exchange</option>
+                <option value="gdax">Gdax</option>
+                <option value="coinbase">Coinbase</option>
+              </select>
+            </div>
+            <div class="banner_right">
+              <img src="setting-icon.png" id="setting_option">
+            </div>
+          </div>
+          <div class="setting_panel">
+            <a href="#" class="close-icon" id="close_setting_panel">
             <a href="#" id="clear_setting">
-              Clear all setting
+              Clear all settings
             </a>
           </div>
-          <div id="display_all_exchange_pairs">
-            <section class="close" id="gdax_pairs">
-              <h3>Choose pairs from Gdax</h3>
-              <ul style="list-style-type:none">
-                <li>
-                  <h4>BITCOIN (BTC)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="btc" value="BTC-USD" />
-                      <label for="btc">BTC/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="btc" value="BTC-EUR">
-                      <label for="btc">BTC/EUR</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="btc" value="BTC-GBP">
-                      <label for="btc">BTC/GBP</label>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <h4>BITCOIN CASH(BCH)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="bch" value="BCH-USD">
-                      <label for="bch">BCH/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="bch" value="BCH-BTC">
-                      <label for="bch">BCH/BTC</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="bch" value="BCH-EUR">
-                      <label for="bch">BCH/EUR</label>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <h4>ETHER(ETH)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="eth" value="ETH-USD">
-                      <label for="eth">ETH/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="eth" value="ETH-BTC">
-                      <label for="eth">ETH/BTC</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="eth" value="ETH-EUR">
-                      <label for="eth">ETH/EUR</label>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <h4>LITECOIN(LTC)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="ltc" value="LTC-USD">
-                      <label for="ltc">LTC/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="ltc" value="LTC-BTC">
-                      <label for="ltc">LTC/BTC</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="ltc" value="LTC-EUR">
-                      <label for="ltc">LTC/EUR</label>
-                    </div>
-                  </ul>
-                </li>
-              </ul>
-            </section>
-            <section class="close" id="coinbase_pairs">
-              <h3>Choose pairs from Coinbase</h3>
-              <ul style="list-style-type:none">
-                <li>
-                  <h4>BITCOIN (BTC)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="btc" value="BTC-USD">
-                      <label for="btc">BTC/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="btc" value="BTC-EUR">
-                      <label for="btc">BTC/EUR</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="btc" value="BTC-GBP">
-                      <label for="btc">BTC/GBP</label>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <h4>BITCOIN CASH(BCH)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="bch" value="BCH-USD">
-                      <label for="bch">BTC/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="bch" value="BCH-BTC">
-                      <label for="bch">BCH/BTC</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="bch" value="BCH-EUR">
-                      <label for="bch">BCH/EUR</label>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <h4>ETHER(ETH)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="eth" value="ETH-USD">
-                      <label for="eth">ETH/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="eth" value="ETH-BTC">
-                      <label for="eth">ETH/BTC</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="eth" value="ETH-EUR">
-                      <label for="eth">ETH/EUR</label>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <h4>LITECOIN(LTC)</h4>
-                  <ul>
-                    <div>
-                      <input type="checkbox" name="ltc" value="LTC-USD">
-                      <label for="ltc">LTC/USD</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="ltc" value="LTC-BTC">
-                      <label for="ltc">LTC/BTC</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="ltc" value="LTC-EUR">
-                      <label for="ltc">LTC/EUR</label>
-                    </div>
-                  </ul>
-                </li>
-              </ul>
-            </section>
-            <input type="submit" class="submit_chosen_pairs close" id="submit_chosen_pairs" value="Submit">
+          <div class="main_panel">
+            <div id="display_all_exchange_pairs">
+              <section class="close" id="gdax_pairs">
+                <h3>Choose pairs from Gdax</h3>
+                <ul class="exchange_pairs_list">
+                  <li>
+                    <h4>BITCOIN (BTC)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="btc" value="BTC-USD" />
+                        <label for="btc">BTC/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="btc" value="BTC-EUR">
+                        <label for="btc">BTC/EUR</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="btc" value="BTC-GBP">
+                        <label for="btc">BTC/GBP</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>BITCOIN CASH(BCH)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="bch" value="BCH-USD">
+                        <label for="bch">BCH/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="bch" value="BCH-BTC">
+                        <label for="bch">BCH/BTC</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="bch" value="BCH-EUR">
+                        <label for="bch">BCH/EUR</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>ETHER(ETH)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="eth" value="ETH-USD">
+                        <label for="eth">ETH/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="eth" value="ETH-BTC">
+                        <label for="eth">ETH/BTC</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="eth" value="ETH-EUR">
+                        <label for="eth">ETH/EUR</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>LITECOIN(LTC)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="ltc" value="LTC-USD">
+                        <label for="ltc">LTC/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="ltc" value="LTC-BTC">
+                        <label for="ltc">LTC/BTC</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="ltc" value="LTC-EUR">
+                        <label for="ltc">LTC/EUR</label>
+                      </div>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+              <section class="close" id="coinbase_pairs">
+                <h3>Choose pairs from Coinbase</h3>
+                <ul style="list-style-type:none">
+                  <li>
+                    <h4>BITCOIN (BTC)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="btc" value="BTC-USD">
+                        <label for="btc">BTC/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="btc" value="BTC-EUR">
+                        <label for="btc">BTC/EUR</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="btc" value="BTC-GBP">
+                        <label for="btc">BTC/GBP</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>BITCOIN CASH(BCH)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="bch" value="BCH-USD">
+                        <label for="bch">BTC/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="bch" value="BCH-BTC">
+                        <label for="bch">BCH/BTC</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="bch" value="BCH-EUR">
+                        <label for="bch">BCH/EUR</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>ETHER(ETH)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="eth" value="ETH-USD">
+                        <label for="eth">ETH/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="eth" value="ETH-BTC">
+                        <label for="eth">ETH/BTC</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="eth" value="ETH-EUR">
+                        <label for="eth">ETH/EUR</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>LITECOIN(LTC)</h4>
+                    <ul>
+                      <div>
+                        <input type="checkbox" name="ltc" value="LTC-USD">
+                        <label for="ltc">LTC/USD</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="ltc" value="LTC-BTC">
+                        <label for="ltc">LTC/BTC</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" name="ltc" value="LTC-EUR">
+                        <label for="ltc">LTC/EUR</label>
+                      </div>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+              <input type="submit" class="submit_chosen_pairs close" id="submit_chosen_pairs" value="Submit">
+            </div>
+            <div id="real_time_pairs" class="real_time_pairs">
+            </div>
           </div>
-          <div id="real_time_pairs" class="real_time_pairs">
-          </div>
+        </div>
         <script type="text/javascript" src="popup_helper.js"></script>
         <script type="text/javascript" src="popup.js"></script>
         <script type="text/javascript" src="api.js"></script>
