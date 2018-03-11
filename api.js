@@ -17,18 +17,17 @@ Gdax.prototype.open = function(pairs, callback){
     }]
   };
   var _self = this;
-  var web_socket = this.socket;
-  web_socket.onopen = function (event) {
-    web_socket.send(
+  _self.socket.onopen = function (event) {
+    _self.socket.send(
       JSON.stringify(msg)
     );
   };
-  web_socket.onmessage = function (event) {
+  _self.socket.onmessage = function (event) {
     console.log(event.data);
     var res = JSON.parse(event.data);
     callback(res);
   }
   //set open_connection
-  open_connection['gdax'] = this;
+  open_connection['gdax'] = _self;
 }
 //Gdax API end
