@@ -1,13 +1,13 @@
 {
         "manifest_version": 2,
-        "name": "CryptoCurrency Exchamge Tracker",
-        "version": "1.0",
+        "name": "CryptoCurrency Exchange Tracker",
+        "version": "1.43",
         "browser_action": {
-          "default_icon": {                    // optional
-            "16": "img.png"           // optional
+          "default_icon": {
+            "16": "img.png"
           },
-          "default_title": "CryptoCurrency Exchamge Tracker",      // optional; shown in tooltip
-          "default_popup": "popup.html"        // optional
+          "default_title": "CryptoCurrency Exchamge Tracker",
+          "default_popup": "popup.html"
         },
-        "permissions": ["storage"]
+        "permissions": ["storage", "tabs"]
 }
