@@ -51,7 +51,7 @@ function loadBinancePairsOption(){
 function refreshCheckedList(exchange_name){
   var pairs = selected_pairs[exchange_name];
   var selected_exchange_elm = $('#'+exchange_name+'_pairs')
-  $('#gdax_pairs [type=checkbox]').each(function(index){
+  $('#' + exchange_name + '_pairs [type=checkbox]').each(function(index){
     if(pairs.includes(this.value)){
       this.checked = true;
     }
