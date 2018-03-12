@@ -31,3 +31,22 @@ Gdax.prototype.open = function(pairs, callback){
   open_connection['gdax'] = _self;
 }
 //Gdax API end
+
+//Binance API
+function Binance(){
+  this.open = function(pairs, callback){
+      var stream = pairs.join('@ticker/')+'@ticker'
+      this.socket = new WebSocket("wss://stream.binance.com:9443/stream?streams=" + stream);
+      var _self = this;
+      _self.socket.onmessage = function (event) {
+        console.log(event.data);
+        var res = JSON.parse(event.data);
+        callback(res);
+      }
+      open_connection['binance'] = _self;
+  }
+  this.close = function(){
+    return this.socket.close();
+  }
+};
+//Binance API end
