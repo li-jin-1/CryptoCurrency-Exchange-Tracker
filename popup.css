@@ -386,7 +386,23 @@ select{
 ul *{
   margin: 3px;
 }
+#display_all_exchange_pairs{
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
 #display_all_exchange_pairs .exchange_pairs_list{
   margin-left: 40px;
   list-style-type: none;
+  padding-bottom: 40px;
+}
+#display_all_exchange_pairs .submit_footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  background-color: #4777b3;
 }

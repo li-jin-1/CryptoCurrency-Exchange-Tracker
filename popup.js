@@ -45,7 +45,7 @@ $( document ).ready(function(){
     console.log(selected_pairs)
   });
 
-  $('#submit_chosen_pairs').on('click', function(){
+  $('#submit_chosen_pairs_button').on('click', function(){
     $('#display_all_exchange_pairs section').hide();
     $('#submit_chosen_pairs').hide();
     $('#select_exchange').val('');
