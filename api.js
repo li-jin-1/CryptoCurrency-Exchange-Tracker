@@ -9,6 +9,12 @@ function Gdax(){
 };
 
 Gdax.prototype.open = function(pairs, callback){
+  /*
+  product_id=[
+                "ETH-BTC",
+                "ETH-USD"
+            ]
+  */
   var msg = {
     "type": "subscribe",
     "channels": [{
@@ -50,3 +56,15 @@ function Binance(){
   }
 };
 //Binance API end
+
+//Huobi.pro api
+function Huobi(){
+  this.socket = new WebSocket("wss://api.huobi.pro/ws");
+  this.open = function(pairs){
+
+  }
+  this.close = function(){
+    return this.socket.close();
+  }
+}
+//Huobi.pro api end
