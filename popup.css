@@ -104,7 +104,7 @@
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
-.coin:last-child{
+.real_time_pairs div:last-child .coin:last-child{
     border-bottom: 0;
 }
 .coin.active{
