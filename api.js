@@ -60,8 +60,42 @@ function Binance(){
 //Huobi.pro api
 function Huobi(){
   this.socket = new WebSocket("wss://api.huobi.pro/ws");
-  this.open = function(pairs){
+  this.open = function(pairs, callback){
+    /*{
+      "req": "market.ethbtc.kline.1min",
+      "id": "id10"
+    };*/
+    var msg = {
+      "req": "market."+pairs+".kline.1min",
+      "id": "1"
+    };
+    var _self = this;
+    _self.socket.onopen = function (event) {
+      _self.socket.send(
+        JSON.stringify(msg)
+      );
+    };
+    _self.socket.onmessage = function (event) {
+      //huobi returns blob
+      var reader = new FileReader();
+      reader.addEventListener("loadend", function() {
+        // reader.result contains the contents of blob as a typed array
+        var bin = reader.result;
+        // Decompress binary content
+        let uncompressed = pako.inflate(new Uint8Array(bin), { to: 'string' });
+        // Convert utf8 -> utf16 (native JavaScript string format)
+        let decoded = decodeURIComponent(escape(uncompressed));
+        // Finally, create an object
+        // Note! Can throw error on bad data
+        let obj = JSON.parse(decoded);
 
+        console.log(obj);
+        callback(obj);
+      });
+      reader.readAsArrayBuffer(event.data);
+    }
+    //set open_connection
+    open_connection['gdax'] = _self;
   }
   this.close = function(){
     return this.socket.close();

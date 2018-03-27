@@ -1,0 +1,13 @@
+var data=[];
+var msg = {
+  "req": "market.ethbtc.kline.1min",
+  "id": "id10"
+};
+socket = new WebSocket("wss://api.huobi.pro/ws");
+socket.onmessage = function (event) {
+  console.log(event.data);
+  data.push(event.data)
+}
+socket.send(
+  JSON.stringify(msg)
+);

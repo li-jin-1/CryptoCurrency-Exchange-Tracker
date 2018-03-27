@@ -1,0 +1,19 @@
+{
+  "name": "crypto_api",
+  "version": "1.0.0",
+  "description": "crypto exchange tracker",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/li-jin-1/crypto-api-chrome-extension.git"
+  },
+  "author": "Li Jin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/li-jin-1/crypto-api-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/li-jin-1/crypto-api-chrome-extension#readme"
+}

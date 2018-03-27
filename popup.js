@@ -1,16 +1,5 @@
 //load saved content
-chrome.storage.local.get(function (result) {
-  loadBinancePairsOption();
-  selected_pairs = result['selected_pairs']
-  if(!isEmpty(selected_pairs)){
-    $('#display_all_exchange_pairs section').hide();
-    $('#submit_chosen_pairs').hide();
-    loadSelectedPairs();
-  }
-  else{
-    selected_pairs = {}
-  }
-});
+
 
 $( document ).ready(function(){
   $('#select_exchange').on('change', function(){
