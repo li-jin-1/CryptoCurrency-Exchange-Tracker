@@ -8,6 +8,13 @@ const map_price = {
     gbp: "£",
     btc: String.fromCharCode(parseInt("+20BF",16))
 };
+
+const exchange_callback = {
+  'gdax': GdaxRealTimePrice,
+  'binance': BinanceRealTimePrice,
+  'huobi': HuobiRealTimePrice
+}
+
 const binance_pairs = "ethbtc,ltcbtc,bnbbtc,neobtc,qtumeth,eoseth,snteth,bnteth,bccbtc,gasbtc,bnbeth,btcusdt,ethusdt,hsrbtc,oaxeth,dnteth,mcoeth,icneth,mcobtc,wtcbtc,wtceth,lrcbtc,lrceth,qtumbtc,yoyobtc,omgbtc,omgeth,zrxbtc,zrxeth,stratbtc,strateth,snglsbtc,snglseth,bqxbtc,bqxeth,kncbtc,knceth,funbtc,funeth,snmbtc,snmeth,neoeth,iotabtc,iotaeth,linkbtc,linketh,xvgbtc,xvgeth,ctrbtc,ctreth,saltbtc,salteth,mdabtc,mdaeth,mtlbtc,mtleth,subbtc,subeth,eosbtc,sntbtc,etceth,etcbtc,mthbtc,mtheth,engbtc,engeth,dntbtc,zecbtc,zeceth,bntbtc,astbtc,asteth,dashbtc,dasheth,oaxbtc,icnbtc,btgbtc,btgeth,evxbtc,evxeth,reqbtc,reqeth,vibbtc,vibeth,hsreth,trxbtc,trxeth,powrbtc,powreth,arkbtc,arketh,yoyoeth,xrpbtc,xrpeth,modbtc,modeth,enjbtc,enjeth,storjbtc,storjeth,bnbusdt,venbnb,yoyobnb,powrbnb,venbtc,veneth,kmdbtc,kmdeth,nulsbnb,rcnbtc,rcneth,rcnbnb,nulsbtc,nulseth,rdnbtc,rdneth,rdnbnb,xmrbtc,xmreth,dltbnb,wtcbnb,dltbtc,dlteth,ambbtc,ambeth,ambbnb,bcceth,bccusdt,bccbnb,batbtc,bateth,batbnb,bcptbtc,bcpteth,bcptbnb,arnbtc,arneth,gvtbtc,gvteth,cdtbtc,cdteth,gxsbtc,gxseth,neousdt,neobnb,poebtc,poeeth,qspbtc,qspeth,qspbnb,btsbtc,btseth,btsbnb,xzcbtc,xzceth,xzcbnb,lskbtc,lsketh,lskbnb,tntbtc,tnteth,fuelbtc,fueleth,manabtc,manaeth,bcdbtc,bcdeth,dgdbtc,dgdeth,iotabnb,adxbtc,adxeth,adxbnb,adabtc,adaeth,pptbtc,ppteth,cmtbtc,cmteth,cmtbnb,xlmbtc,xlmeth,xlmbnb,cndbtc,cndeth,cndbnb,lendbtc,lendeth,wabibtc,wabieth,wabibnb,ltceth,ltcusdt,ltcbnb,tnbbtc,tnbeth,wavesbtc,waveseth,wavesbnb,gtobtc,gtoeth,gtobnb,icxbtc,icxeth,icxbnb,ostbtc,osteth,ostbnb,elfbtc,elfeth,aionbtc,aioneth,aionbnb,neblbtc,nebleth,neblbnb,brdbtc,brdeth,brdbnb,mcobnb,edobtc,edoeth,wingsbtc,wingseth,navbtc,naveth,navbnb,lunbtc,luneth,trigbtc,trigeth,trigbnb,appcbtc,appceth,appcbnb,vibebtc,vibeeth,rlcbtc,rlceth,rlcbnb,insbtc,inseth,pivxbtc,pivxeth,pivxbnb,iostbtc,iosteth,chatbtc,chateth,steembtc,steemeth,steembnb,nanobtc,nanoeth,nanobnb,viabtc,viaeth,viabnb,blzbtc,blzeth,blzbnb,aebtc,aeeth,aebnb,rpxbtc,rpxeth,rpxbnb,ncashbtc,ncasheth,ncashbnb,poabtc,poaeth,poabnb,zilbtc,zileth,zilbnb,ontbtc,onteth,ontbnb";
 var selected_pairs = {};
 var open_connection = {};
@@ -63,17 +70,8 @@ function refreshCheckedList(exchange_name){
 
 function loadSelectedPairs(){
   Object.keys(selected_pairs).forEach(function(element) {
-    switch (element) {
-      case 'gdax':
-        appendNewPairs('gdax', selected_pairs['gdax']);
-        GdaxRealTimePrice(selected_pairs['gdax']);
-        break;
-      case 'binance':
-        appendNewPairs('binance', selected_pairs['binance']);
-        BinanceRealTimePrice(selected_pairs['binance']);
-        break;
-      default:
-    }
+    appendNewPairs(element, selected_pairs[element]);
+    exchange_callback[element](selected_pairs[element]);
   });
 }
 
@@ -184,6 +182,19 @@ function BinanceRealTimePrice(pairs){
     var price_elm = elm.find('.coin-price');
     price_elm.text(price);
   });
+}
+
+function HuobiRealTimePrice(pairs){
+  if(isEmpty(pairs)){
+    return false;
+  }
+  if(typeof open_connection['huobi'] !== 'undefined'){
+    open_connection['binhuobiance'].close();
+  }
+  var huobi_api = new Huobi();
+  huobi_api.open(pairs, function(res){
+    //alert(1)
+  })
 }
 function isEmpty(obj) {
 

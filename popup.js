@@ -21,19 +21,15 @@ $( document ).ready(function(){
       selected_pairs[this.value] = [];
     }
     refreshCheckedList(this.value);
-    switch (this.value) {
-      case 'gdax':
-        $('#gdax_pairs').show();
-        break;
-      case 'binance':
-        $('#binance_pairs').show();
-        break;
-      default:
-        $('#submit_chosen_pairs').hide();
+    if(this.value.length > 0){
+      $('#'+this.value+'_pairs').show();
+    }
+    else{
+      $('#submit_chosen_pairs').hide();
     }
   });
 
-  $('#gdax_pairs input[type=checkbox], #binance_pairs input[type=checkbox]').on('change', function(){
+  $('#all_exchange_options section input[type=checkbox]').on('change', function(){
     var action;
     if(this.checked){
       action = 'add';
