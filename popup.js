@@ -12,6 +12,7 @@ chrome.storage.local.get(function (result) {
   }
 });
 
+
 $( document ).ready(function(){
   $('#select_exchange').on('change', function(){
     $('#display_all_exchange_pairs section').hide();

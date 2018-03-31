@@ -189,7 +189,7 @@ function HuobiRealTimePrice(pairs){
     return false;
   }
   if(typeof open_connection['huobi'] !== 'undefined'){
-    open_connection['binhuobiance'].close();
+    open_connection['huobi'].close();
   }
   var huobi_api = new Huobi();
   huobi_api.open(pairs, function(res){
