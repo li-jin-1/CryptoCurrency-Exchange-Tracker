@@ -62,7 +62,7 @@ function Huobi(){
   this.socket = new WebSocket("wss://api.huobi.pro/ws");
   this.open = function(pairs, callback){
     /*{
-      "req": "market.ethbtc.detail",
+      "sub": "market.ethbtc.detail",
       "id": "1"
     };*/
     //market.$symbol.detail
@@ -72,14 +72,12 @@ function Huobi(){
     };
     var _self = this;
     _self.socket.onopen = function (event) {
-      console.log(22222)
       _self.socket.send(
         JSON.stringify(msg)
       );
     };
     _self.socket.onmessage = function (event) {
       //huobi returns blob
-      console.log(11111)
       var reader = new FileReader();
       reader.addEventListener("loadend", function() {
         // reader.result contains the contents of blob as a typed array
