@@ -10,7 +10,15 @@ _gaq.push(['_trackPageview']);
   ga.src = 'https://ssl.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(ga, s);
+
+
+  var socket = io.connect('http://192.168.1.149:4200/');
+  socket.on('connect', function(data) {
+     socket.emit('join', 'Hello World from ssssss');
+  });
 })();
+
+
 
 //google analytics end
 
