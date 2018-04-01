@@ -14,10 +14,11 @@ _gaq.push(['_trackPageview']);
 
 //google analytics end
 
+//get user identity
 chrome.identity.getProfileUserInfo(function(userInfo) {
-  alert(JSON.stringify(userInfo))
   console.log(JSON.stringify(userInfo));
 });
+//get user identity end
 
 //load saved content
 chrome.storage.sync.get(function (result) {
