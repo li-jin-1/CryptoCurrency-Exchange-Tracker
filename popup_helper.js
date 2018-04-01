@@ -76,7 +76,7 @@ function loadSelectedPairs(){
 }
 
 function setSelectedPairs(){
-  chrome.storage.local.set({selected_pairs}, function(){
+  chrome.storage.sync.set({selected_pairs}, function(){
     loadSelectedPairs();
   });
 }

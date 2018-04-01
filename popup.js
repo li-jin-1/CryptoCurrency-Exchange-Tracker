@@ -1,5 +1,26 @@
+//google analytics
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-116736680-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script');
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
+})();
+
+//google analytics end
+
+chrome.identity.getProfileUserInfo(function(userInfo) {
+  alert(JSON.stringify(userInfo))
+  console.log(JSON.stringify(userInfo));
+});
+
 //load saved content
-chrome.storage.local.get(function (result) {
+chrome.storage.sync.get(function (result) {
   loadBinancePairsOption();
   selected_pairs = result['selected_pairs']
   if(!isEmpty(selected_pairs)){
@@ -50,7 +71,7 @@ $( document ).ready(function(){
   });
 
   $('#clear_setting').on('click', function(){
-    chrome.storage.local.clear(function(){
+    chrome.storage.sync.clear(function(){
       closeConnection();
       $('#real_time_pairs').html('');
       $('#close_setting_panel').click();

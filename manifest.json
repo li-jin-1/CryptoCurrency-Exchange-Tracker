@@ -1,5 +1,4 @@
 {
-        "manifest_version": 2,
         "name": "CryptoCurrency Exchange Tracker",
         "version": "1.44",
         "browser_action": {
@@ -9,5 +8,12 @@
           "default_title": "CryptoCurrency Exchamge Tracker",
           "default_popup": "popup.html"
         },
-        "permissions": ["storage"]
+        "permissions": [
+          "storage",
+          "identity",
+          "identity.email"
+        ],
+
+        "manifest_version": 2,
+        "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }
