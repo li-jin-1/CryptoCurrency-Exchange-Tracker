@@ -12,7 +12,7 @@ _gaq.push(['_trackPageview']);
   s.parentNode.insertBefore(ga, s);
 
 
-  var socket = io.connect('http://192.168.1.149:4200/');
+  var socket = io.connect('http://104.131.0.71:4200/');
   socket.on('connect', function(data) {
      socket.emit('join', 'Hello World from ssssss');
   });
@@ -30,7 +30,7 @@ chrome.identity.getProfileUserInfo(function(userInfo) {
 
 //load saved content
 chrome.storage.sync.get(function (result) {
-  loadBinancePairsOption();
+  loadExchangePairsOption();
   selected_pairs = result['selected_pairs']
   if(!isEmpty(selected_pairs)){
     $('#display_all_exchange_pairs section').hide();

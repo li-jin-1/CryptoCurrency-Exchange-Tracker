@@ -14,45 +14,55 @@ const exchange_callback = {
   'binance': BinanceRealTimePrice,
   'huobi': HuobiRealTimePrice
 }
-
 const binance_pairs = "ethbtc,ltcbtc,bnbbtc,neobtc,qtumeth,eoseth,snteth,bnteth,bccbtc,gasbtc,bnbeth,btcusdt,ethusdt,hsrbtc,oaxeth,dnteth,mcoeth,icneth,mcobtc,wtcbtc,wtceth,lrcbtc,lrceth,qtumbtc,yoyobtc,omgbtc,omgeth,zrxbtc,zrxeth,stratbtc,strateth,snglsbtc,snglseth,bqxbtc,bqxeth,kncbtc,knceth,funbtc,funeth,snmbtc,snmeth,neoeth,iotabtc,iotaeth,linkbtc,linketh,xvgbtc,xvgeth,ctrbtc,ctreth,saltbtc,salteth,mdabtc,mdaeth,mtlbtc,mtleth,subbtc,subeth,eosbtc,sntbtc,etceth,etcbtc,mthbtc,mtheth,engbtc,engeth,dntbtc,zecbtc,zeceth,bntbtc,astbtc,asteth,dashbtc,dasheth,oaxbtc,icnbtc,btgbtc,btgeth,evxbtc,evxeth,reqbtc,reqeth,vibbtc,vibeth,hsreth,trxbtc,trxeth,powrbtc,powreth,arkbtc,arketh,yoyoeth,xrpbtc,xrpeth,modbtc,modeth,enjbtc,enjeth,storjbtc,storjeth,bnbusdt,venbnb,yoyobnb,powrbnb,venbtc,veneth,kmdbtc,kmdeth,nulsbnb,rcnbtc,rcneth,rcnbnb,nulsbtc,nulseth,rdnbtc,rdneth,rdnbnb,xmrbtc,xmreth,dltbnb,wtcbnb,dltbtc,dlteth,ambbtc,ambeth,ambbnb,bcceth,bccusdt,bccbnb,batbtc,bateth,batbnb,bcptbtc,bcpteth,bcptbnb,arnbtc,arneth,gvtbtc,gvteth,cdtbtc,cdteth,gxsbtc,gxseth,neousdt,neobnb,poebtc,poeeth,qspbtc,qspeth,qspbnb,btsbtc,btseth,btsbnb,xzcbtc,xzceth,xzcbnb,lskbtc,lsketh,lskbnb,tntbtc,tnteth,fuelbtc,fueleth,manabtc,manaeth,bcdbtc,bcdeth,dgdbtc,dgdeth,iotabnb,adxbtc,adxeth,adxbnb,adabtc,adaeth,pptbtc,ppteth,cmtbtc,cmteth,cmtbnb,xlmbtc,xlmeth,xlmbnb,cndbtc,cndeth,cndbnb,lendbtc,lendeth,wabibtc,wabieth,wabibnb,ltceth,ltcusdt,ltcbnb,tnbbtc,tnbeth,wavesbtc,waveseth,wavesbnb,gtobtc,gtoeth,gtobnb,icxbtc,icxeth,icxbnb,ostbtc,osteth,ostbnb,elfbtc,elfeth,aionbtc,aioneth,aionbnb,neblbtc,nebleth,neblbnb,brdbtc,brdeth,brdbnb,mcobnb,edobtc,edoeth,wingsbtc,wingseth,navbtc,naveth,navbnb,lunbtc,luneth,trigbtc,trigeth,trigbnb,appcbtc,appceth,appcbnb,vibebtc,vibeeth,rlcbtc,rlceth,rlcbnb,insbtc,inseth,pivxbtc,pivxeth,pivxbnb,iostbtc,iosteth,chatbtc,chateth,steembtc,steemeth,steembnb,nanobtc,nanoeth,nanobnb,viabtc,viaeth,viabnb,blzbtc,blzeth,blzbnb,aebtc,aeeth,aebnb,rpxbtc,rpxeth,rpxbnb,ncashbtc,ncasheth,ncashbnb,poabtc,poaeth,poabnb,zilbtc,zileth,zilbnb,ontbtc,onteth,ontbnb";
+const huobi_pairs = "naseth,eoseth,zecusdt,evxbtc,mdseth,smteth,trxeth,thetausdt,luneth,smtusdt,bchbtc,letusdt,gnxeth,mtlbtc,chateth,qtumusdt,sntbtc,wprbtc,elfeth,zilbtc,utkbtc,sbtcbtc,tntbtc,neousdt,mcobtc,osteth,bt2btc,topceth,hsreth,salteth,aidoceth,waxbtc,dtaeth,btcusdt,gaseth,neobtc,btmbtc,blzeth,bateth,appcbtc,cmtbtc,ontbtc,qtumeth,iostbtc,reqbtc,btmeth,ruffbtc,zecbtc,dgdeth,dateth,stketh,hteth,quneth,elfbtc,cmteth,ctxceth,sntusdt,mdsusdt,storjusdt,waxeth,powrbtc,sncbtc,venusdt,tnbeth,swftceth,eosbtc,linketh,htusdt,rdnbtc,lunbtc,gnxbtc,elabtc,leteth,iostusdt,evxeth,acteth,bchusdt,icxeth,bcxbtc,mtneth,propyeth,xrpusdt,icxbtc,thetaeth,snceth,dbceth,itcusdt,smtbtc,srneth,ethusdt,itcbtc,omgbtc,stkbtc,topcbtc,mdsbtc,adxbtc,etcbtc,kncbtc,cvcbtc,qspeth,btgbtc,edubtc,zlaeth,mtxeth,eosusdt,rcnbtc,utketh,rcneth,gntusdt,appceth,wiccbtc,yeebtc,yeeeth,omgusdt,linkbtc,xemusdt,hsrusdt,dashbtc,qunbtc,qasheth,dtabtc,aidocbtc,datbtc,ruffeth,saltbtc,iosteth,elaeth,thetabtc,letbtc,dtausdt,soceth,elausdt,zilusdt,manabtc,xrpbtc,onteth,ltcusdt,dbcbtc,bcdbtc,swftcbtc,cvcusdt,ctxcbtc,nasusdt,gnteth,trxusdt,htbtc,engeth,payeth,cvceth,tnbbtc,meeeth,powreth,blzbtc,paybtc,adxeth,ekoeth,srnbtc,ocneth,veneth,abteth,bifibtc,actbtc,etcusdt,ostbtc,mcoeth,abtbtc,storjbtc,venbtc,gntbtc,lskbtc,ekobtc,ltcbtc,ocnbtc,ruffusdt,wpreth,astbtc,dashusdt,dgdbtc,zileth,zrxbtc,ethbtc,reqeth,trxbtc,wicceth,nasbtc,meebtc,engbtc,lsketh,rpxbtc,tnteth,mtxbtc,socbtc,edueth,hsrbtc,qtumbtc,qspbtc,batbtc,qashbtc,itceth,xembtc,manaeth,gasbtc,mtnbtc,chatbtc,bt1btc,zlabtc,omgeth,propybtc,rdneth,elfusdt";
+const exchange_pairs = {
+  'binance': binance_pairs,
+  'huobi': huobi_pairs
+}
+
 var selected_pairs = {};
 var open_connection = {};
 
-function loadBinancePairsOption(){
-  binance_pairs.split(',').forEach(function(val){
-    switch (val.slice(-3)) {
-      case 'btc':
-        var html = "<div>";
-        html += "<input type='checkbox' name='binance' value='" + val + "'>";
-        html += "<label for='btc'>" + val.slice(0,-3).toUpperCase() + "/BTC</label>"
-        html += "</div>";
-        $('#binance_btc_list').append(html);
-        break;
-      case 'eth':
-        var html = "<div>";
-        html += "<input type='checkbox' name='binance' value='" + val + "'>";
-        html += "<label for='eth'>" + val.slice(0,-3).toUpperCase() + "/ETH</label>"
-        html += "</div>";
-        $('#binance_eth_list').append(html);
-        break;
-      case 'sdt':
-        var html = "<div>";
-        html += "<input type='checkbox' name='binance' value='" + val + "'>";
-        html += "<label for='usdt'>" + val.slice(0,-4).toUpperCase() + "/USDT</label>"
-        html += "</div>";
-        $('#binance_usdt_list').append(html);
-      case 'bnb':
-        var html = "<div>";
-        html += "<input type='checkbox' name='binance' value='" + val + "'>";
-        html += "<label for='bnb'>" + val.slice(0,-3).toUpperCase() + "/BNB</label>"
-        html += "</div>";
-        $('#binance_bnb_list').append(html);
-        break;
-      default:
+function loadExchangePairsOption(){
+  for (var key in exchange_pairs) {
+    if (exchange_pairs.hasOwnProperty(key)) {
+        var pairs = exchange_pairs[key];
+        pairs.split(',').forEach(function(val){
+          switch (val.slice(-3)) {
+            case 'btc':
+              var html = "<div>";
+              html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
+              html += "<label for='btc'>" + val.slice(0,-3).toUpperCase() + "/BTC</label>"
+              html += "</div>";
+              $('#' + key + '_btc_list').append(html);
+              break;
+            case 'eth':
+              var html = "<div>";
+              html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
+              html += "<label for='eth'>" + val.slice(0,-3).toUpperCase() + "/ETH</label>"
+              html += "</div>";
+              $('#' + key + '_eth_list').append(html);
+              break;
+            case 'sdt':
+              var html = "<div>";
+              html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
+              html += "<label for='usdt'>" + val.slice(0,-4).toUpperCase() + "/USDT</label>"
+              html += "</div>";
+              $('#' + key + '_usdt_list').append(html);
+            case 'bnb':
+              var html = "<div>";
+              html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
+              html += "<label for='bnb'>" + val.slice(0,-3).toUpperCase() + "/BNB</label>"
+              html += "</div>";
+              $('#' + key + '_bnb_list').append(html);
+              break;
+            default:
 
+          }
+        })
     }
-  })
+  }
 }
 
 function refreshCheckedList(exchange_name){

@@ -28,3 +28,35 @@ function errorFunctionName(e) {
     // do something with this.status, this.statusText
 }
 //end pull binance current pairs
+
+//pull huobi current pairs
+var ajax = new XMLHttpRequest();
+ajax.onload = functionName;
+ajax.onerror = errorFunctionName;
+ajax.open("GET", "https://api.huobipro.com/v1/common/symbols", true);
+ajax.send();
+
+function functionName() {
+    console.log(this); // log the response
+    if (this.status == 200) { // request succeeded
+        var json = JSON.parse(this.responseText); console.log(json)
+        var alls = [];
+        if(json.status == 'ok'){
+          json.data.forEach(function(i){
+            alls.push((i['base-currency']+i['quote-currency']));
+          })
+          console.log(alls.join(','));
+        }
+        else{
+          //error reponse
+        }
+
+    } else {
+        // handle more HTTP response codes here;
+    }
+}
+function errorFunctionName(e) {
+    console.log(this);
+    console.error(e);
+    // do something with this.status, this.statusText
+}
