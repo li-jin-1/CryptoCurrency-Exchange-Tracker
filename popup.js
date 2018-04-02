@@ -11,11 +11,12 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(ga, s);
 
-
+/*
   var socket = io.connect('http://104.131.0.71:4200/');
   socket.on('connect', function(data) {
      socket.emit('join', 'Hello World from ssssss');
   });
+  */
 })();
 
 

@@ -203,7 +203,18 @@ function HuobiRealTimePrice(pairs){
   }
   var huobi_api = new Huobi();
   huobi_api.open(pairs, function(res){
-    //alert(1)
+    var symbol = res.ch.split('.')[1];
+    var price = Number(res.tick.close);
+    var elm = $('#huobi_'+symbol);
+    var open_24h = Number(res.tick.open);
+    var growth_24hr = (Math.abs(price - open_24h)*100/open_24h).toFixed(2);
+    var trend_24hr = (Number(price) >= Number(open_24h))? 'up' : 'down';
+    var change_rate = elm.find('.change');
+    change_rate.text(growth_24hr + '%');
+    change_rate.removeClass('up down');
+    change_rate.addClass(trend_24hr);
+    var price_elm = elm.find('.coin-price');
+    price_elm.text(price);
   })
 }
 function isEmpty(obj) {

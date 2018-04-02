@@ -62,19 +62,22 @@ function Huobi(){
   this.socket = new WebSocket("wss://api.huobi.pro/ws");
   this.open = function(pairs, callback){
     /*{
-      "sub": "market.ethbtc.detail",
+      "sub": "market.ethbtc.kline.1day",
       "id": "1"
     };*/
-    //market.$symbol.detail
-    var msg = {
-      "sub": "market."+pairs+'.detail',
-      "id": "1"
-    };
+    //market.$symbol.kline.$period
     var _self = this;
+    var msg = {};
     _self.socket.onopen = function (event) {
-      _self.socket.send(
-        JSON.stringify(msg)
-      );
+      pairs.forEach(function(p){
+       msg = {
+          "sub": "market."+p+'.kline.1day',
+          "id": p
+        };
+        _self.socket.send(
+          JSON.stringify(msg)
+        );
+      })
     };
     _self.socket.onmessage = function (event) {
       //huobi returns blob
@@ -89,9 +92,18 @@ function Huobi(){
         // Finally, create an object
         // Note! Can throw error on bad data
         let obj = JSON.parse(decoded);
-
-        console.log(obj);
-        callback(obj);
+        if(typeof obj['ping'] !== 'undefined'){
+          _self.socket.send(
+            JSON.stringify({pong: obj['ping']})
+          );
+        }
+        else if(typeof obj['status'] !== 'undefined'){
+          //obj['status'] == 'ok'
+        }
+        else{
+          console.log(obj);
+          callback(obj);
+        }
       });
       reader.readAsArrayBuffer(event.data);
     }
