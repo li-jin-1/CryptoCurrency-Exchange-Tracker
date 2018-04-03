@@ -1,6 +1,6 @@
 {
         "name": "CryptoCurrency Exchange Tracker",
-        "version": "1.45",
+        "version": "1.49",
         "browser_action": {
           "default_icon": {
             "16": "img.png"
@@ -10,8 +10,7 @@
         },
         "permissions": [
           "storage",
-          "identity",
-          "identity.email"
+          "identity"
         ],
 
         "manifest_version": 2,

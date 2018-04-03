@@ -31,27 +31,27 @@ function loadExchangePairsOption(){
         pairs.split(',').forEach(function(val){
           switch (val.slice(-3)) {
             case 'btc':
-              var html = "<div>";
+              var html = "<div class='crypto_pair'>";
               html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
               html += "<label for='btc'>" + val.slice(0,-3).toUpperCase() + "/BTC</label>"
               html += "</div>";
               $('#' + key + '_btc_list').append(html);
               break;
             case 'eth':
-              var html = "<div>";
+              var html = "<div class='crypto_pair'>";
               html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
               html += "<label for='eth'>" + val.slice(0,-3).toUpperCase() + "/ETH</label>"
               html += "</div>";
               $('#' + key + '_eth_list').append(html);
               break;
             case 'sdt':
-              var html = "<div>";
+              var html = "<div class='crypto_pair'>";
               html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
               html += "<label for='usdt'>" + val.slice(0,-4).toUpperCase() + "/USDT</label>"
               html += "</div>";
               $('#' + key + '_usdt_list').append(html);
             case 'bnb':
-              var html = "<div>";
+              var html = "<div class='crypto_pair'>";
               html += "<input type='checkbox' name='" + key + "' value='" + val + "'>";
               html += "<label for='bnb'>" + val.slice(0,-3).toUpperCase() + "/BNB</label>"
               html += "</div>";

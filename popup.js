@@ -73,6 +73,10 @@ $( document ).ready(function(){
     console.log(selected_pairs)
   });
 
+  $('.crypto_pair').on('click', function(){
+    $(this).find('input[type=checkbox]').click();
+  });
+
   $('#submit_chosen_pairs_button').on('click', function(){
     $('#display_all_exchange_pairs section').hide();
     $('#submit_chosen_pairs').hide();
