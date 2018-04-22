@@ -61,7 +61,7 @@ $( document ).ready(function(){
     }
   });
 
-  $('#all_exchange_options section input[type=checkbox]').on('change', function(){
+  $('#all_exchange_options section input[type=checkbox]').on('click', function(){
     var action;
     if(this.checked){
       action = 'add';
@@ -69,12 +69,12 @@ $( document ).ready(function(){
     else{
       action = 'remove';
     }
-    editSelectPairs(this.name, action, this.value)
+    editSelectPairs(this.name, action, this.value);
     console.log(selected_pairs)
   });
 
-  $('.crypto_pair').on('click', function(){
-    $(this).find('input[type=checkbox]').click();
+  $('.crypto_pair :not(input[type=checkbox])').on('click', function(){
+    $(this).parent().find('input[type=checkbox]').click();
   });
 
   $('#submit_chosen_pairs_button').on('click', function(){

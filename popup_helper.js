@@ -247,8 +247,10 @@ function closeConnection(api){
     Object.keys(open_connection).forEach(function(key) {
       open_connection[key].close();
     });
+    selected_pairs = {};
   }
   else{
     open_connection[api].close();
+    delete open_connection[api];
   }
 }
