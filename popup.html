@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" media="all" title="normal" href="popup.css">
         <script src="modules/jquery-3.3.1.min.js"></script>
         <script src="modules/pako.min.js"></script>
+        <script src="modules/fuse.min.js"></script>
         <script src="modules/socket.io.js"></script>
         <script type="text/javascript" src="popup_helper.js"></script>
         <script type="text/javascript" src="popup.js"></script>
@@ -37,6 +38,7 @@
               <div id="all_exchange_options">
                 <section class="close" id="gdax_pairs">
                   <h3>Choose pairs from Gdax</h3>
+                  <input type="text" placeholder="Search.." name="search" id="gdax_search">
                   <ul class="exchange_pairs_list">
                     <li>
                       <h4>BITCOIN (BTC)</h4>
@@ -110,6 +112,7 @@
                 </section>
                 <section class="close" id="binance_pairs">
                   <h3>Choose pairs from Binance</h3>
+                  <input type="text" placeholder="Search.." name="search" id="binance_search">
                   <ul class="exchange_pairs_list">
                     <li id="binance_btc">
                       <h4>BTC MARKETS</h4>
@@ -131,6 +134,7 @@
                 </section>
                 <section class="close" id="huobi_pairs">
                   <h3>Choose pairs from Huobi</h3>
+                  <input type="text" placeholder="Search.." name="search" id="huobi_search">
                   <ul class="exchange_pairs_list">
                     <li id="huobi_usdt">
                       <h4>USDT MARKETS</h4>

@@ -1,11 +1,11 @@
 {
         "name": "CryptoCurrency Exchange Tracker",
-        "version": "1.49",
+        "version": "1.50",
         "browser_action": {
           "default_icon": {
             "16": "img.png"
           },
-          "default_title": "CryptoCurrency Exchamge Tracker",
+          "default_title": "CryptoCurrency Exchange Tracker",
           "default_popup": "popup.html"
         },
         "permissions": [

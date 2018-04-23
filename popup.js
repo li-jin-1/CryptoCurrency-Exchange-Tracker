@@ -32,19 +32,42 @@ chrome.identity.getProfileUserInfo(function(userInfo) {
 //load saved content
 chrome.storage.sync.get(function (result) {
   loadExchangePairsOption();
-  selected_pairs = result['selected_pairs']
+  selected_pairs = result['selected_pairs'];
   if(!isEmpty(selected_pairs)){
     $('#display_all_exchange_pairs section').hide();
     $('#submit_chosen_pairs').hide();
     loadSelectedPairs();
   }
   else{
-    selected_pairs = {}
+    selected_pairs = {};
   }
 });
 
 
 $( document ).ready(function(){
+  //set search list
+  SetSeachList();
+  $('[id*=_search]').on('keyup', function () {
+      var exchange_name = this.id.replace('_search', '');
+      if(isEmpty(this.value)){
+          $('#'+exchange_name+'_pairs .crypto_pair').show();
+      }
+      else{
+          $('#'+exchange_name+'_pairs .crypto_pair').hide();
+          var options = {
+              keys: ['pair'],
+              id: 'pair',
+              threshold: 0.1,
+              distance:1000,
+          };
+          var fuse = new Fuse(search_list[exchange_name], options);
+          var result = fuse.search(this.value);
+          result.forEach(function (re) {
+              $('#'+exchange_name+'_pairs input[type=checkbox][value='+re+']').parent().show();
+          });
+      }
+  });
+  //set search list end
   $('#select_exchange').on('change', function(){
     $('#display_all_exchange_pairs section').hide();
     $('#submit_chosen_pairs').show();

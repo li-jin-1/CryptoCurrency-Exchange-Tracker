@@ -386,6 +386,11 @@ select{
 ul *{
   margin: 3px;
 }
+.main_panel input[type=text]{
+    padding: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
 #display_all_exchange_pairs{
   width: 100%;
   justify-content: center;
